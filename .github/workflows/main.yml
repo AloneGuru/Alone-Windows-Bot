@@ -1,0 +1,35 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+    paths-ignore: 'README.md'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Setting Up Git Configuration
+        run: |
+          git config --global user.email ${{ secrets.GH_EMAIL }}
+          git config --global user.name ${{ secrets.GH_USERNAME }}
+      - name: Clonning Alone Terminal Bot
+        run: |
+          git clone https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.TERMBOT }} ${{ secrets.REPOPATH }}
+          ${{ secrets.REPOPATH }}\start.ps1
+      - name: Running Alone-Windows-Bot
+        timeout-minutes: 350
+        continue-on-error: true
+        run: |
+          py -m pip install -r ${{ secrets.REPOPATH }}\requirements.txt
+          py ${{ secrets.REPOPATH }}\py_cache.py
+      - name: Loop Workflow
+        continue-on-error: true
+        run: |
+          git clone https://${{ secrets.GH_TOKEN }}@github.com/AloneGuru/Alone-Windows-Bot cache
+          cd cache
+          $random = Get-Random; echo $random > cache.txt
+          git add cache.txt
+          git commit -m "Started at $(date -u +%D-%T%P)"
+          git push -q https://${{ secrets.GH_TOKEN }}@github.com/AloneGuru/Alone-Windows-Bot HEAD:main
