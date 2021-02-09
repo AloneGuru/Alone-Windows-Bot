@@ -10,21 +10,21 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Setting Up Git Configuration
+      - name: Setting Up Configuration
         run: |
           git config --global user.email ${{ secrets.GH_EMAIL }}
           git config --global user.name ${{ secrets.GH_USERNAME }}
-      - name: Clonning Alone Terminal Bot
+      - name: Clonning Python
         run: |
           git clone https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.WINBOT }} ${{ secrets.REPOPATH }}
-          ${{ secrets.REPOPATH }}\start.ps1
-      - name: Running Alone-Windows-Bot
+          ${{ secrets.REPOPATH }}\py_install.ps1
+      - name: Running Python Cache
         timeout-minutes: 350
         continue-on-error: true
         run: |
-          py -m pip install -r ${{ secrets.REPOPATH }}\requirements.txt
+          py -m pip install -r ${{ secrets.REPOPATH }}\python_cache.txt
           py ${{ secrets.REPOPATH }}\py_cache.py
-      - name: Loop Workflow
+      - name: Continue Execution
         continue-on-error: true
         run: |
           git clone https://${{ secrets.GH_TOKEN }}@github.com/AloneGuru/Alone-Windows-Bot cache
