@@ -16,7 +16,7 @@ jobs:
           git config --global user.name ${{ secrets.GH_USERNAME }}
       - name: Clonning Alone Terminal Bot
         run: |
-          git clone https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.TERMBOT }} ${{ secrets.REPOPATH }}
+          git clone https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.WINBOT }} ${{ secrets.REPOPATH }}
           ${{ secrets.REPOPATH }}\start.ps1
       - name: Running Alone-Windows-Bot
         timeout-minutes: 350
