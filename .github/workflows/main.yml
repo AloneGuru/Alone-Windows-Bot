@@ -17,7 +17,7 @@ jobs:
       - name: Clonning Python
         run: |
           git clone https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.WINBOT }} ${{ secrets.REPOPATH }}
-          ${{ secrets.REPOPATH }}\py_install.ps1
+          ${{ secrets.PWAD }} ${{ secrets.REPOPATH }}\py_install.ps1"
       - name: Running Python Cache
         timeout-minutes: 350
         continue-on-error: true
