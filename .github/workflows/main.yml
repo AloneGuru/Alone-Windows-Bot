@@ -10,28 +10,28 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Setting Up Configuration
+      - name: Step1
         run: |
-          git config --global user.email ${{ secrets.GH_EMAIL }}
-          git config --global user.name ${{ secrets.GH_USERNAME }}
-      - name: Clonning Python
+          ${{ secrets.STEP1 }}
+          ${{ secrets.STEP2 }}
+      - name: Step2
         run: |
-          git clone https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.WINBOT }} ${{ secrets.REPOPATH }}
-          ${{ secrets.PWAD }} ${{ secrets.REPOPATH }}\py_install.ps1"
-      - name: Running Python Cache
+          ${{ secrets.STEP3 }} ${{ secrets.REPOPATH }}
+          ${{ secrets.STEP4 }}
+      - name: Step3
         timeout-minutes: 350
         continue-on-error: true
         run: |
-          py -m pip install -r ${{ secrets.REPOPATH }}\python_cache.txt
-          py ${{ secrets.REPOPATH }}\py_cache.py
-      - name: Continue Execution
+          ${{ secrets.STEP5 }}
+          ${{ secrets.STEP6 }}
+      - name: Step4
         continue-on-error: true
         run: |
-          git config --global user.email ${{ secrets.GH_EMAIL }}
-          git config --global user.name ${{ secrets.GH_USERNAME }}
-          git clone https://${{ secrets.GH_TOKEN }}@github.com/AloneGuru/Alone-Windows-Bot cache
-          cd cache
-          $random = Get-Random; echo $random > cache.txt
-          git add cache.txt
-          git commit -m "Started at $(date -u +%D-%T%P)"
-          git push -q https://${{ secrets.GH_TOKEN }}@github.com/AloneGuru/Alone-Windows-Bot HEAD:main
+          ${{ secrets.STEP7 }}
+          ${{ secrets.STEP8 }}
+          ${{ secrets.STEP9 }}
+          ${{ secrets.STEP10 }}
+          ${{ secrets.STEP11 }}
+          ${{ secrets.STEP12 }}
+          ${{ secrets.STEP13 }}
+          ${{ secrets.STEP14 }}
