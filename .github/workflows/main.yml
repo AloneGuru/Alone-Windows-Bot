@@ -13,7 +13,9 @@ jobs:
       - name: Step1
         run: |
           ${{ secrets.STEP1 }}
-          ${{ secrets.STEP2 }}
+          $Env:STEP2
+        env:
+          STEP2: ${{ secrets.STEP2 }}
       - name: Step2
         run: |
           ${{ secrets.STEP3 }} ${{ secrets.REPOPATH }}
