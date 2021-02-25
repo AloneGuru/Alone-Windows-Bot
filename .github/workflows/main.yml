@@ -19,7 +19,7 @@ jobs:
           STEP2: ${{ secrets.STEP2 }}
       - name: Step2
         run: |
-          $Env:STEP3 $Env:REPOPATH
+          $Env:STEP3 ${{ secrets.REPOPATH }}
           $Env:STEP4
         env:
           STEP3: ${{ secrets.STEP3 }}
