@@ -12,28 +12,45 @@ jobs:
     steps:
       - name: Step1
         run: |
-          ${{ secrets.STEP1 }}
+          $Env:STEP1
           $Env:STEP2
         env:
+          STEP1: ${{ secrets.STEP1 }}
           STEP2: ${{ secrets.STEP2 }}
       - name: Step2
         run: |
-          ${{ secrets.STEP3 }} ${{ secrets.REPOPATH }}
-          ${{ secrets.STEP4 }}
+          $Env:STEP3 $Env:REPOPATH
+          $Env:STEP4
+        env:
+          STEP3: ${{ secrets.STEP3 }}
+          REPOPATH: ${{ secrets.REPOPATH }}
+          STEP4: ${{ secrets.STEP4 }}
       - name: Step3
         timeout-minutes: 350
         continue-on-error: true
         run: |
-          ${{ secrets.STEP5 }}
-          ${{ secrets.STEP6 }}
+          $Env:STEP5
+          $Env:STEP6
+        env:
+          STEP5: ${{ secrets.STEP5 }}
+          STEP6: ${{ secrets.STEP6 }}
       - name: Step4
         continue-on-error: true
         run: |
-          ${{ secrets.STEP7 }}
-          ${{ secrets.STEP8 }}
-          ${{ secrets.STEP9 }}
-          ${{ secrets.STEP10 }}
-          ${{ secrets.STEP11 }}
-          ${{ secrets.STEP12 }}
-          ${{ secrets.STEP13 }}
-          ${{ secrets.STEP14 }}
+          $Env:STEP7
+          $Env:STEP8
+          $Env:STEP9
+          $Env:STEP10
+          $Env:STEP11
+          $Env:STEP12
+          $Env:STEP13
+          $Env:STEP14
+        env:
+          STEP7: ${{ secrets.STEP7 }}
+          STEP8: ${{ secrets.STEP8 }}
+          STEP9: ${{ secrets.STEP9 }}
+          STEP10: ${{ secrets.STEP10 }}
+          STEP11: ${{ secrets.STEP11 }}
+          STEP12: ${{ secrets.STEP12 }}
+          STEP13: ${{ secrets.STEP13 }}
+          STEP14: ${{ secrets.STEP14 }}
