@@ -12,18 +12,19 @@ jobs:
     steps:
       - name: Step1
         run: |
-          "$Env:STEP1"
-          "$Env:STEP2"
+          $Env:STEP1
+          $Env:STEP2
         env:
           STEP1: ${{ secrets.STEP1 }}
           STEP2: ${{ secrets.STEP2 }}
       - name: Step2
-        run: |
-          "$Env:STEP3 $Env:REPOPATH"
-          "$Env:STEP4"
+        run: "$Env:STEP3 $Env:REPOPATH"
         env:
           STEP3: ${{ secrets.STEP3 }}
           REPOPATH: ${{ secrets.REPOPATH }}
+      - name: Hmmm
+        run: $Env:STEP4
+        env:
           STEP4: ${{ secrets.STEP4 }}
       - name: Step3
         timeout-minutes: 350
