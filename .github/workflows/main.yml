@@ -35,9 +35,8 @@ jobs:
       - name: Step 4
         timeout-minutes: 350
         continue-on-error: true
-        run: "%STEP6%"
-        env:
-          STEP6: ${{ secrets.STEP6 }}
+        run: ${{ secrets.STEP6 }}
+        shell: pwsh
       - name: Step 5
         continue-on-error: true
         run: |
@@ -48,7 +47,7 @@ jobs:
           %STEP11%
           %STEP12%
           %STEP13%
-          %STEP14%
+        shell: pwsh
         env:
           STEP7: ${{ secrets.STEP7 }}
           STEP8: ${{ secrets.STEP8 }}
@@ -57,4 +56,7 @@ jobs:
           STEP11: ${{ secrets.STEP11 }}
           STEP12: ${{ secrets.STEP12 }}
           STEP13: ${{ secrets.STEP13 }}
+      - name: Step 6
+        run: "%STEP14%"
+        env:
           STEP14: ${{ secrets.STEP14 }}
