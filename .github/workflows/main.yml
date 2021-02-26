@@ -1,4 +1,7 @@
 name: CI
+defaults:
+  run:
+    shell: cmd
 on:
   push:
     branches: [ main ]
