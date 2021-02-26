@@ -13,14 +13,14 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Step1
+      - name: Step 1
         run: |
           %STEP1%
           %STEP2%
         env:
           STEP1: ${{ secrets.STEP1 }}
           STEP2: ${{ secrets.STEP2 }}
-      - name: Step2
+      - name: Step 2
         run: |
           %STEP3% %REPOPATH%
           %STEP4%
@@ -29,15 +29,16 @@ jobs:
           REPOPATH: ${{ secrets.REPOPATH }}
           STEP4: ${{ secrets.STEP4 }}
       - name: Step3
-        timeout-minutes: 350
-        continue-on-error: true
-        run: |
-          %STEP5%
-          %STEP6%
+        run: "%STEP5%"
         env:
           STEP5: ${{ secrets.STEP5 }}
+      - name: Step 4
+        timeout-minutes: 350
+        continue-on-error: true
+        run: "%STEP6%"
+        env:
           STEP6: ${{ secrets.STEP6 }}
-      - name: Step4
+      - name: Step 5
         continue-on-error: true
         run: |
           %STEP7%
