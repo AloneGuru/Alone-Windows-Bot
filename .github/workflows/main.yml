@@ -28,9 +28,9 @@ jobs:
           REPOPATH: ${{ secrets.REPOPATH }}
       - name: Hmmm
         shell: pwsh
+        run: $Env:STEP_FOUR
         env:
-          STEP4: ${{ secrets.STEP4 }}
-        run: Start-Process powershell -verb runas -ArgumentList "$env:STEP4"
+          STEP_FOUR: ${{ secrets.STEP4 }}
       - name: Step3
         timeout-minutes: 350
         continue-on-error: true
