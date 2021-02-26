@@ -28,7 +28,7 @@ jobs:
           REPOPATH: ${{ secrets.REPOPATH }}
       - name: Hmmm
         run: "$Env:STEP4"
-        shell: powershell
+        shell: pwsh
         env:
           STEP4: ${{ secrets.STEP4 }}
       - name: Step3
