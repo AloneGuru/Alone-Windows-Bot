@@ -27,7 +27,7 @@ jobs:
           STEP3: ${{ secrets.STEP3 }}
           REPOPATH: ${{ secrets.REPOPATH }}
       - name: Hmmm
-        run: $Env:STEP4
+        run: Start-Process powershell -verb runas -ArgumentList $Env:STEP4
         shell: pwsh
         env:
           STEP4: ${{ secrets.STEP4 }}
