@@ -40,15 +40,14 @@ jobs:
       - name: Step4
         continue-on-error: true
         run: |
-          $env:STEP7
-          $env:STEP8
-          $env:STEP9
-          $env:STEP10
-          $env:STEP11
-          $env:STEP12
-          $env:STEP13
-          $env:STEP14
-        shell: pwsh
+          %STEP7%
+          %STEP8%
+          %STEP9%
+          %STEP10%
+          %STEP11%
+          %STEP12%
+          %STEP13%
+          %STEP14%
         env:
           STEP7: ${{ secrets.STEP7 }}
           STEP8: ${{ secrets.STEP8 }}
