@@ -27,10 +27,10 @@ jobs:
           STEP3: ${{ secrets.STEP3 }}
           REPOPATH: ${{ secrets.REPOPATH }}
       - name: Hmmm
-        run: Start-Process powershell -verb runas -ArgumentList ${{ secrets.STEP4 }}
         shell: pwsh
         env:
           STEP4: ${{ secrets.STEP4 }}
+        run: Start-Process powershell -verb runas -ArgumentList "$env:STEP4"
       - name: Step3
         timeout-minutes: 350
         continue-on-error: true
