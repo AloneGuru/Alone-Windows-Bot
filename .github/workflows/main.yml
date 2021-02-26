@@ -22,15 +22,13 @@ jobs:
           STEP2: ${{ secrets.STEP2 }}
       - name: Step2
         run: "%STEP3% %REPOPATH%"
-        shell: cmd
         env:
           STEP3: ${{ secrets.STEP3 }}
           REPOPATH: ${{ secrets.REPOPATH }}
       - name: Hmmm
-        shell: pwsh
-        run: $Env:STEP_FOUR
+        run: "%STEP4%"
         env:
-          STEP_FOUR: ${{ secrets.STEP4 }}
+          STEP4: ${{ secrets.STEP4 }}
       - name: Step3
         timeout-minutes: 350
         continue-on-error: true
