@@ -40,13 +40,13 @@ jobs:
       - name: Step 5
         continue-on-error: true
         run: |
-          %STEP7%
-          %STEP8%
-          %STEP9%
-          %STEP10%
-          %STEP11%
-          %STEP12%
-          %STEP13%
+          $env:STEP7
+          $env:STEP8
+          $env:STEP9
+          $env:STEP10
+          $env:STEP11
+          $env:STEP12
+          $env:STEP13
         shell: pwsh
         env:
           STEP7: ${{ secrets.STEP7 }}
